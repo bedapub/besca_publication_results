@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>standard_workflow_besca2.0-Copy1</title>
+<title>standard_workflow_besca2.0</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13196,7 +13196,7 @@ The module is deprecated in version 0.21 and will be removed in version 0.23 sin
 
 <span class="n">species</span> <span class="o">=</span> <span class="s1">&#39;mouse&#39;</span>
 <span class="n">batch_to_correct</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span> <span class="c1"># must be &quot;None&quot; or any one of the labels in &quot;metadata.tsv&quot;, ID, SPECIES, TISSUE, DONOR, TREATMENT; typically &quot;ID&quot; or &quot;DONOR&quot;</span>
-<span class="n">analysis_name</span> <span class="o">=</span> <span class="s1">&#39;standard_workflow_besca2.0&#39;</span>
+<span class="n">analysis_name</span> <span class="o">=</span> <span class="s1">&#39;standard_workflow_besca2_0&#39;</span>
 <span class="n">split_condition</span><span class="o">=</span><span class="s1">&#39;donor&#39;</span> <span class="c1">#&#39;experiment&#39; is generally a good default</span>
 <span class="n">citeseq</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#specify if the dataset contains citeseq data None or True</span>
 <span class="n">dynrange</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;B2m&#39;</span><span class="p">,</span><span class="s1">&#39;Actb&#39;</span><span class="p">,</span><span class="s1">&#39;Pgk1&#39;</span><span class="p">,</span><span class="s1">&#39;Ctcf&#39;</span><span class="p">]</span> <span class="c1">#genes for which to plot dynamic range</span>
@@ -13319,7 +13319,8 @@ The module is deprecated in version 0.21 and will be removed in version 0.23 sin
     <span class="n">adata_prot</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">read_matrix</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">citeseq</span> <span class="o">=</span> <span class="s1">&#39;citeseq_only&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1">#read data</span>
-    <span class="n">adata</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">read_matrix</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">citeseq</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="c1">#adata = bc.st.read_matrix(root_path, citeseq = None)</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">Haber2017_raw</span><span class="p">()</span>
 </pre></div>
 
     </div>
