@@ -45,7 +45,7 @@ detachAllPackages()
 
 ```{r}
 # devtools::install_github("https://github.com/LTLA/celldex")
- 
+ devtools::install_github("thomasp85/patchwork")
 ```
 
 
@@ -266,7 +266,7 @@ pred.pbmc3k_Monoca <- SingleR(test=SE_PBMC, ref=ref1, labels=ref1$label.fine, de
 
 ```{r}
 
-write.csv( pred.pbmc3k_Monoca, file =  "pred.pmbc3kwithMonaco.csv")
+write.csv( pred.pbmc3k_Monoca, file =  "predictions/pred.pmbc3kwithMonaco.csv")
 ```
 
 
@@ -286,6 +286,8 @@ plotScoreDistribution(pred.pbmc3k_celltype3)
 ```{r}
 #plotDeltaDistribution(pred.pbmc3k_celltype3)
 ```
+
+
 
 # Predicting with Granja
 
@@ -324,14 +326,14 @@ plotScoreDistribution(pred.Granja_pbmc3k_celltype3)
 
 
 ```{r writing_singleData_pred}
-write.csv( pred.pbmc3k_celltype3, file =  "predictedKV.csv")
+write.csv( pred.pbmc3k_celltype3, file =  "predictions/predictedKV.csv")
 
 
-write.csv( pred.Granja_pbmc3k_celltype3, file =  "predictedGranja.csv")
+write.csv( pred.Granja_pbmc3k_celltype3, file =  "predictions/predictedGranja.csv")
 
 ```
 
-```{r combinedPrediction}
+```{r combinedPrediction, cache=TRUE}
 
 get_common_genes2 <- intersect( intersect( rownames(SE_KV),  rownames( SE_Granja)), rownames( SE_PBMC) )
 cat( "We are taking only the common genes : \n ")
@@ -363,7 +365,7 @@ plotScoreHeatmap(combined)
 
 ```{r writingCombinedResults}
 
-write.csv( combined, file =  "combined_prediction.csv")
+write.csv( combined, file =  "predictions/combined_prediction.csv")
 
 
 ```
@@ -374,9 +376,9 @@ write.csv( combined, file =  "combined_prediction.csv")
 library(ggalluvial)
 
 df <- full_join( full_join( 
-  read.csv("predictedGranja.csv")  %>% dplyr::select( "Barcode" = X, "Granja_predicted" = pruned.labels),
-  read.csv("predictedKV.csv")  %>% dplyr::select( "Barcode" = X, "Kotliarov_predicted" = pruned.labels)),
-  read.csv("combined_prediction.csv")  %>% dplyr::select( "Barcode" = X, "GranjaAndKV_predicted" = pruned.labels)
+  read.csv("predictions/predictedGranja.csv")  %>% dplyr::select( "Barcode" = X, "Granja_predicted" = pruned.labels),
+  read.csv("predictions/predictedKV.csv")  %>% dplyr::select( "Barcode" = X, "Kotliarov_predicted" = pruned.labels)),
+  read.csv("predictions/combined_prediction.csv")  %>% dplyr::select( "Barcode" = X, "GranjaAndKV_predicted" = pruned.labels)
   #SE_PBMC
   ) %>% replace_na(  list( "non predicted", "non predicted", "non predicted", "non predicted"))
 #df<- df[ !is.na(df$Barcode),]
