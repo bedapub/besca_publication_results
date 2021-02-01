@@ -1,0 +1,58 @@
+---
+title: "cellassign_testing"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r cars}
+
+library(cellassign)
+library(SingleCellExperiment)
+library(BioQC)
+library(pheatmap)
+
+data(example_sce)
+print(example_sce)
+
+data(example_TME_markers)
+gene_expression_data=readRDS("pbmc3k_filtered.Rds")
+counts(gene_expression_data) <- expm1(logcounts(gene_expression_data)) #2504 cells
+
+gmtFile="CellNames_scseqCMs6_sigs_final_v2.gmt"
+genesets <- readGmt(gmtFile)
+bescasig=lapply(genesets,function(x) x$genes)
+#marker_mat <- marker_list_to_mat(example_TME_markers$symbol,include_other = FALSE)
+marker_mat <- marker_list_to_mat(bescasig,include_other = FALSE)
+
+libsizes <- colSums(counts(gene_expression_data))
+sizeFactors(gene_expression_data) <- libsizes/mean(libsizes)
+s <- sizeFactors(gene_expression_data)
+
+#rownames(gene_expression_data)=rowData(gene_expression_data)$ENSEMBL
+sce <- gene_expression_data[intersect(rownames(marker_mat), rownames(gene_expression_data)),]
+marker_mat=marker_mat[rownames(sce),]
+
+cas <- cellassign(exprs_obj = sce,
+                  marker_gene_info = marker_mat,
+                  s = s) ### X can be covariates # 135 2504 
+
+pheatmap(cellprobs(cas))
+setname="pbmc3k"
+mname="bescaFv2"
+save(cas, sce, file=paste0(setname,"_filtered_heatmap_",mname,".RData"))
+
+### Export csv files
+cellout=celltypes(cas)
+names(cellout)=rownames(colData(gene_expression_data))
+write.table(cellout,paste0(setname,"_filtered_cellassign_",mname,".csv"),sep=',',quote=FALSE,col.names=FALSE)
+
+mycas=cellprobs(cas)
+rownames(mycas)=rownames(colData(gene_expression_data))
+write.table(mycas,paste0(setname,"_filtered_cellassign_",mname,"_probabilities.csv"),sep=',',quote=FALSE)
+```
