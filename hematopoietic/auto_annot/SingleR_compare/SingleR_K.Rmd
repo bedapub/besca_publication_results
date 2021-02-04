@@ -1,0 +1,423 @@
+---
+title: "Single R PMBC label transfer"
+author: "Alice Julien-Laferriere"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output:
+  html_document:
+    code_folding: hide
+    self_contained: true
+    number_sections: yes
+    toc: true
+    toc_depth: 2
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    theme: spacelab
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libraries}
+rm(list= ls())
+library(ggalluvial)
+detachAllPackages <- function() {
+
+  basic.packages <- c("package:stats","package:graphics","package:grDevices","package:utils","package:datasets","package:methods","package:base")
+
+  package.list <- search()[ifelse(unlist(gregexpr("package:",search()))==1,TRUE,FALSE)]
+
+  package.list <- setdiff(package.list,basic.packages)
+
+  if (length(package.list)>0)  for (package in package.list) detach(package, character.only=TRUE)
+
+}
+
+detachAllPackages()
+```
+
+
+```{r}
+# devtools::install_github("https://github.com/LTLA/celldex")
+ devtools::install_github("thomasp85/patchwork")
+```
+
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+#library(loomR)
+library(patchwork, lib.loc =  "/pstore/home/julienla/R/x86_64-pc-linux-gnu-library/4.0.1-foss")
+library(scRNAseq)
+library(Seurat)
+
+library(SingleR)
+library(celldex)
+library(tidyverse)
+library(SummarizedExperiment)
+```
+
+
+
+
+```{r}
+
+library(reticulate)
+use_virtualenv("besca23")
+ad <- import("anndata", convert = FALSE)
+scipy_ <- import("scipy.sparse", convert = TRUE)
+pandas <- import("pandas", convert = TRUE)
+#pbmc3k <- Convert(pbmc_ad, to = "seurat")
+```
+
+# Introduction
+
+
+
+Each datasets are coming from besca standard packages and were downloaded using besca (but could also be found in Zenodo).
+
+
+
+
+
+Initial datasets (h5ad) were read using reticulated and besca conda environment 2.3 (besca23 is the flagged release of besca (see github:https://github.com/bedapub/besca/releases/tag/2.3 )
+
+
+Once this was done, we save the said data into RDS files and worked with those.
+For information purpose, code chunks transforming the h5ad into RDS are shown here but are not executed for every runs.
+
+
+
+## Loading PBMC
+
+
+```{r readPMBKC, eval = FALSE}
+
+infile='../datasets/data/pbmc3k_filtered.h5ad'
+
+
+adata=ad$read_h5ad(infile)
+
+
+counts <-  t( scipy_$csr_matrix$todense(adata$raw$X))
+
+
+
+dim(counts) 
+
+var_genes = py_to_r(adata$raw$var)
+obs_cells = py_to_r(adata$obs)
+
+
+nrow(var_genes ) == nrow(counts)
+nrow(obs_cells ) == ncol(counts)
+
+
+SE_PBMC <- SummarizedExperiment(  assays =list(  'logcounts' = counts),
+                      rowData = var_genes, #, convert=TRUE),
+                      colData = obs_cells #, convert=TRUE)
+)
+                      
+SE_PBMC <- as(SE_PBMC, "SingleCellExperiment")
+
+#saveRDS(SE_PBMC, "pbmc3k_filtered.Rds")
+rm( "counts", "var_genes", "obs_cells")
+```
+
+
+```{r getRDS_PBMC3K }
+
+SE_PBMC <- readRDS("pbmc3k_filtered.Rds")
+```
+
+
+
+
+## Loading Granja 
+
+
+
+```{r readGranja , eval = FALSE}
+infile='../datasets/data/Granja2019_annotated.h5ad'
+
+
+adata=ad$read_h5ad(infile)
+
+counts <-  t( scipy_$csr_matrix$todense(adata$raw$X))
+
+dim(counts) 
+
+var_genes = py_to_r(adata$raw$var)
+obs_cells = py_to_r(adata$obs)
+
+
+nrow(var_genes ) == nrow(counts)
+nrow(obs_cells ) == ncol(counts)
+
+
+
+rm('adata')
+```
+
+
+We loaded the processed data containing:: 
+`r nrow(counts)` genes observations and `r ncol(counts)` cells.
+
+
+```{r SE_Granja , eval = FALSE}
+
+
+
+SE_Granja <- SummarizedExperiment(  assays =list(  'logcounts' = counts),
+                      rowData = var_genes, #, convert=TRUE),
+                      colData = obs_cells #, convert=TRUE)
+)
+                      
+SE_Granja <- as(SE_Granja, "SingleCellExperiment")
+
+
+# saveRDS(SE_Granja, "Granja2019_annotated.Rds")
+rm( "counts", "var_genes", "obs_cells", "infile")
+```
+
+
+```{r getGranjaRDS}
+SE_Granja <- readRDS("Granja2019_annotated.Rds")
+```
+
+
+## Loading Kotliarov2020
+
+```{r read_KV, eval = FALSE}
+infile='../datasets/data/Kotliarov2020_processed_citeseq_merged_annotated.h5ad'
+
+
+adata=ad$read_h5ad(infile)
+
+
+counts <-  t( scipy_$csr_matrix$todense(adata$raw$X))
+
+dim(counts)
+var_genes = py_to_r(adata$raw$var)
+obs_cells = py_to_r(adata$obs)
+
+
+nrow(var_genes ) == nrow(counts)
+
+nrow(obs_cells ) == ncol(counts)
+SE_KV <- SummarizedExperiment(  assays =list(  'logcounts' = counts),
+                      rowData = var_genes, #, convert=TRUE),
+                      colData = obs_cells #, convert=TRUE)
+)
+                      
+SE_KV <- as(SE_KV, "SingleCellExperiment")
+#saveRDS(SE_KV, "Kotliarov2020_processed_citeseq_merged_annotated.Rds")
+
+rm( "counts", "var_genes", "obs_cells" , "adata")
+```
+
+
+```{r getKVRDS}
+
+
+SE_KV <-  readRDS("Kotliarov2020_processed_citeseq_merged_annotated.Rds")
+```
+
+
+
+# Predicting PBMC3K with single cell datasets from celldex
+
+
+We chose to try to annotate PBMC 3K with the Monaco provided datasets as it is reported to be the most adequate for HUman PBMC in the celldex vignette.
+
+```{r read_Monaco, }
+
+#library(BiocGenerics)
+
+ref1 <- MonacoImmuneData()
+
+table(ref1$label.main)
+
+table(ref1$label.fine)
+table(ref1$label.ont)
+summary(assay(ref1))
+# Scuttle is supposed to be used to transfirom counts,, but here we already have normalized data; Without the step below, results were really really bad.
+# Unfortunatly, we could not install scuttle.
+#library(edgeR)
+#
+# DOES NOT IMPROVE ACCURACY
+#assays(ref1) <- endoapply(assays(ref1), cpm, log = TRUE, prior.count = 1) #
+ref1_b <- ref1
+
+#as#says(ref1) <- 
+ #assay(ref1) <- log( scale(assay(ref1_b), scale = rep(10**6, ncol(assay(ref1)))) + 1 ) # 
+assay(ref1) <- Seurat::NormalizeData(SummarizedExperiment::assay(ref1_b))
+```
+
+```{r predWithMoncaco, cache = TRUE}
+pred.pbmc3k_Monoca <- SingleR(test=SE_PBMC, ref=ref1, labels=ref1$label.fine, de.method="wilcox")
+```
+
+
+
+```{r}
+
+write.csv( pred.pbmc3k_Monoca, file =  "predictions/pred.pmbc3kwithMonaco.csv")
+```
+
+
+
+
+
+# Predicting PBM3K with Kotliarov2020 annotation.
+
+```{r computePredwithKV , cache = TRUE}
+pred.pbmc3k_celltype3 <- SingleR(test=SE_PBMC, ref=SE_KV, labels=SE_KV$celltype3, de.method="wilcox")
+table(pred.pbmc3k_celltype3$labels)
+```
+```{r}
+plotScoreDistribution(pred.pbmc3k_celltype3)
+```
+
+```{r}
+#plotDeltaDistribution(pred.pbmc3k_celltype3)
+```
+
+
+
+# Predicting with Granja
+
+
+
+
+## Predicting PBM3K with Granja annotation.
+
+```{r , predPBMCwithGranja, cache = TRUE}
+pred.Granja_pbmc3k_celltype3 <- SingleR(test=SE_PBMC, ref=SE_Granja, labels=SE_Granja$celltype3, de.method="wilcox")
+table(pred.Granja_pbmc3k_celltype3$labels)
+```
+
+
+
+```{r showGranjaPredonPBMC}
+summary( pruneScores(pred.Granja_pbmc3k_celltype3) )
+
+
+plotScoreDistribution (pred.Granja_pbmc3k_celltype3[ pruneScores(pred.Granja_pbmc3k_celltype3), ] )
+
+```
+
+
+```{r}
+plotScoreDistribution(pred.Granja_pbmc3k_celltype3)
+```
+
+```{r}
+#plotel(pred.Granja_pbmc3k_celltype3)
+```
+
+
+# Combining Granja and Kotliarov for PBM3K prediction
+
+
+
+```{r writing_singleData_pred}
+write.csv( pred.pbmc3k_celltype3, file =  "predictions/predictedKV.csv")
+
+
+write.csv( pred.Granja_pbmc3k_celltype3, file =  "predictions/predictedGranja.csv")
+
+```
+
+```{r combinedPrediction, cache=TRUE}
+
+get_common_genes2 <- intersect( intersect( rownames(SE_KV),  rownames( SE_Granja)), rownames( SE_PBMC) )
+cat( "We are taking only the common genes : \n ")
+cat( length(get_common_genes2 ), "kept out of : \n " , nrow(SE_KV), " genes in Kotlia2020 ; ", 
+     nrow( SE_Granja), "genes in Granja ; ", nrow(SE_PBMC) , " from PBMC 3 K" )
+
+trainSV <- trainSingleR( list(SE_KV[get_common_genes2, ], SE_Granja[get_common_genes2, ]),
+                         labels = list( SE_KV$celltype3, SE_Granja$celltype3), recompute = TRUE)
+```
+
+```{r}
+combined <- combineRecomputedResults(
+    results=list(pred.pbmc3k_celltype3, pred.Granja_pbmc3k_celltype3), 
+    test=SE_PBMC[get_common_genes2, ],
+    trained=trainSV 
+    )# list(SE_KV, SE_Granja))
+```
+
+```{r, fig.height=15}
+plotScoreDistribution(combined)
+```
+
+
+
+```{r  fig.width=15, fig.height=10}
+plotScoreHeatmap(combined)
+```
+
+
+```{r writingCombinedResults}
+
+write.csv( combined, file =  "predictions/combined_prediction.csv")
+
+
+```
+
+
+
+```{r, fig.width=15, fig.height=10}
+library(ggalluvial)
+
+df <- full_join( full_join( 
+  read.csv("predictions/predictedGranja.csv")  %>% dplyr::select( "Barcode" = X, "Granja_predicted" = pruned.labels),
+  read.csv("predictions/predictedKV.csv")  %>% dplyr::select( "Barcode" = X, "Kotliarov_predicted" = pruned.labels)),
+  read.csv("predictions/combined_prediction.csv")  %>% dplyr::select( "Barcode" = X, "GranjaAndKV_predicted" = pruned.labels)
+  #SE_PBMC
+  ) %>% replace_na(  list( "non predicted", "non predicted", "non predicted", "non predicted"))
+#df<- df[ !is.na(df$Barcode),]
+
+
+df_toto <- df %>% group_by(Granja_predicted, Kotliarov_predicted, GranjaAndKV_predicted) %>% tally(name= "Freq", sort = TRUE) 
+  #(Freq = n())
+
+ggplot(df_toto,
+       aes(y = Freq,
+           axis1 = Granja_predicted, axis2 = Kotliarov_predicted, axis3 = GranjaAndKV_predicted)) +
+  geom_alluvium(aes(fill = GranjaAndKV_predicted),
+                width = 0, knot.pos = 0, reverse = FALSE)  +
+  guides(fill = FALSE) +
+  geom_stratum(width = 1/8, reverse = FALSE) +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum)),
+            reverse = FALSE) +
+  scale_x_continuous(breaks = 1:3, labels = c("Granja_predicted", "Kotliarov_predicted", "GranjaAndKV_predicted")) +
+  #coord_flip() +
+  ggtitle("Predictions comparison")
+
+```
+
+
+
+
+
+
+
+# Predicting Kotliarov with Granja and vice-versa
+
+
+We encountered memory issue; please see script predicting_largeDataset.R
+
+
+# Session INformation
+
+
+```{r}
+sessionInfo()
+```
+
