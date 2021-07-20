@@ -1,0 +1,27 @@
+train_dataset = ,[],test_datset = ,
+celltype = ,Cell_type_dblabel_lev1,method = ,author
+remove_nonshared = ,False,merge = ,,use_raw = ,False,genes_to_use = ,
+accuracy=,0.81,f1=,0.81
+clustering report
+ari=,0.96,ami=,0.92
+silhouette_celltype=,0.21,silhouette_pred=,0.17
+pair confusion matrix
+,0,1
+0,2593628702,20696228
+1,26132192,656886384
+classification report
+,precision,recall,f1-score,support
+T cell,0.98,0.79,0.88,3659.0
+blood vessel endothelial cell,0.0,0.0,0.0,0.0
+endothelial cell,0.0,0.0,0.0,9117.0
+enteroendocrine cell,0.93,0.8,0.86,725.0
+fibroblast,0.97,0.99,0.98,6740.0
+lymphocyte of B lineage,0.82,1.0,0.9,2447.0
+myeloid leukocyte,0.97,0.99,0.98,5361.0
+neural cell,0.0,0.0,0.0,0.0
+pancreatic acinar cell,0.87,0.97,0.92,1843.0
+pancreatic ductal cell,0.99,0.98,0.99,21624.0
+pancreatic stellate cell,0.96,0.96,0.96,5907.0
+accuracy,0.81,0.81,0.81,0.81
+macro avg,0.68,0.68,0.68,57423.0
+weighted avg,0.81,0.81,0.81,57423.0

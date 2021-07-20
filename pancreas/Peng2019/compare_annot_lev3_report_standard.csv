@@ -1,0 +1,37 @@
+train_dataset = ,[],test_datset = ,
+celltype = ,Cell_type_dblabel,method = ,author
+remove_nonshared = ,False,merge = ,,use_raw = ,False,genes_to_use = ,
+accuracy=,0.69,f1=,0.7
+clustering report
+ari=,0.94,ami=,0.89
+silhouette_celltype=,0.21,silhouette_pred=,0.12
+pair confusion matrix
+,0,1
+0,2597123180,17201750
+1,42589198,640429378
+classification report
+,precision,recall,f1-score,support
+B cell,0.0,0.0,0.0,2447.0
+CD1c-positive myeloid dendritic cell,0.0,0.0,0.0,0.0
+"CD8-positive, alpha-beta cytotoxic T cell",0.0,0.0,0.0,0.0
+T cell,0.0,0.0,0.0,3659.0
+blood vessel endothelial cell,0.0,0.0,0.0,0.0
+"central memory CD4-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+endothelial cell,0.0,0.0,0.0,9117.0
+enteroendocrine cell,0.0,0.0,0.0,725.0
+fibroblast,0.97,0.99,0.98,6740.0
+macrophage,0.99,0.8,0.88,5361.0
+memory B cell,0.0,0.0,0.0,0.0
+neural cell,0.0,0.0,0.0,0.0
+pancreatic acinar cell,0.87,0.97,0.92,1843.0
+pancreatic ductal cell,0.99,0.98,0.99,21624.0
+pancreatic epsilon cell,0.0,0.0,0.0,0.0
+pancreatic stellate cell,0.96,0.96,0.96,5907.0
+plasma cell,0.0,0.0,0.0,0.0
+proliferating B cell,0.0,0.0,0.0,0.0
+"proliferating CD8-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+regulatory T cell,0.0,0.0,0.0,0.0
+type B pancreatic cell,0.0,0.0,0.0,0.0
+accuracy,0.69,0.69,0.69,0.69
+macro avg,0.23,0.22,0.22,57423.0
+weighted avg,0.71,0.69,0.7,57423.0
