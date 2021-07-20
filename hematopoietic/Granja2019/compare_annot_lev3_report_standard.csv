@@ -1,0 +1,47 @@
+train_dataset = ,[],test_datset = ,
+celltype = ,dblabel,method = ,citeseq
+remove_nonshared = ,False,merge = ,,use_raw = ,False,genes_to_use = ,
+accuracy=,0.52,f1=,0.54
+clustering report
+ari=,0.71,ami=,0.79
+silhouette_celltype=,0.21,silhouette_pred=,0.25
+pair confusion matrix
+,0,1
+0,1076986216,25874186
+1,30298252,78751502
+classification report
+,precision,recall,f1-score,support
+B cell,0.0,0.0,0.0,0.0
+CD1c-positive myeloid dendritic cell,0.0,0.0,0.0,375.0
+"CD4-positive, alpha-beta memory T cell",0.0,0.0,0.0,0.0
+"CD8-positive, alpha-beta cytotoxic T cell",0.0,0.0,0.0,647.0
+"IL7R-max CD8-positive, alpha-beta cytotoxic T cell",0.0,0.0,0.0,916.0
+basophil,0.97,0.56,0.71,177.0
+"central memory CD4-positive, alpha-beta T cell",0.0,0.0,0.0,2442.0
+"central memory CD8-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+classical monocyte,0.96,0.9,0.93,6420.0
+common lymphoid progenitor,0.35,0.78,0.48,516.0
+cytotoxic CD56-dim natural killer cell,0.0,0.0,0.0,2087.0
+"effector memory CD8-positive, alpha-beta T cell",0.01,0.01,0.01,925.0
+erythrocyte,0.79,0.98,0.87,1609.0
+granulocyte monocyte progenitor cell,0.0,0.0,0.0,0.0
+hematopoietic cell,0.0,0.0,0.0,422.0
+hematopoietic multipotent progenitor cell,0.53,0.7,0.6,1582.0
+hematopoietic stem cell,0.96,0.49,0.65,2320.0
+lymphocyte of B lineage,0.0,0.0,0.0,640.0
+memory B cell,0.0,0.0,0.0,505.0
+myeloid dendritic cell,0.0,0.0,0.0,0.0
+myeloid leukocyte,0.0,0.0,0.0,773.0
+naive B cell,0.0,0.0,0.0,1332.0
+"naive thymus-derived CD4-positive, alpha-beta T cell",0.95,0.77,0.85,5962.0
+"naive thymus-derived CD8-positive, alpha-beta T cell",0.95,0.96,0.95,1504.0
+natural killer cell,0.0,0.0,0.0,0.0
+neutrophil,0.45,0.29,0.35,1555.0
+non-classical monocyte,0.96,0.66,0.78,429.0
+plasma cell,1.0,0.72,0.84,86.0
+plasmacytoid dendritic cell,0.73,0.88,0.8,426.0
+pro-B cell,0.96,0.96,0.96,713.0
+regulatory T cell,0.0,0.0,0.0,450.0
+accuracy,0.52,0.52,0.52,0.52
+macro avg,0.34,0.31,0.32,34813.0
+weighted avg,0.58,0.52,0.54,34813.0
