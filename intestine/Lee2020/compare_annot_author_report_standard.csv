@@ -1,0 +1,76 @@
+train_dataset = ,[],test_datset = ,
+celltype = ,Cell_subtype,method = ,author
+remove_nonshared = ,False,merge = ,,use_raw = ,False,genes_to_use = ,
+accuracy=,0.0,f1=,0.0
+clustering report
+ari=,0.54,ami=,0.75
+silhouette_celltype=,0.04,silhouette_pred=,0.2
+pair confusion matrix
+,0,1
+0,3243189594,229782506
+1,76495312,216748118
+classification report
+,precision,recall,f1-score,support
+CD19+CD20+ B,0.0,0.0,0.0,3592.0
+CD1c-positive myeloid dendritic cell,0.0,0.0,0.0,0.0
+CD4+ T cells,0.0,0.0,0.0,7033.0
+CD8+ T cells,0.0,0.0,0.0,6230.0
+"CD8-positive, alpha-beta cytotoxic T cell",0.0,0.0,0.0,0.0
+CMS1,0.0,0.0,0.0,1168.0
+CMS2,0.0,0.0,0.0,10481.0
+CMS3,0.0,0.0,0.0,5254.0
+CMS4,0.0,0.0,0.0,9.0
+Enteric glial cells,0.0,0.0,0.0,293.0
+Goblet cells,0.0,0.0,0.0,123.0
+HEV endothelial cell,0.0,0.0,0.0,0.0
+IgA plasma cell,0.0,0.0,0.0,0.0
+IgA+ Plasma,0.0,0.0,0.0,3288.0
+IgG plasma cell,0.0,0.0,0.0,0.0
+IgG+ Plasma,0.0,0.0,0.0,1731.0
+Intermediate,0.0,0.0,0.0,138.0
+Lymphatic ECs,0.0,0.0,0.0,108.0
+MARCO-positive macrophage,0.0,0.0,0.0,0.0
+Mast cells,0.0,0.0,0.0,149.0
+Mature Enterocytes type 1,0.0,0.0,0.0,172.0
+Mature Enterocytes type 2,0.0,0.0,0.0,96.0
+Myofibroblasts,0.0,0.0,0.0,1143.0
+NK cells,0.0,0.0,0.0,1089.0
+Pericytes,0.0,0.0,0.0,438.0
+Pro-inflammatory,0.0,0.0,0.0,2006.0
+Proliferating,0.0,0.0,0.0,171.0
+Proliferative ECs,0.0,0.0,0.0,44.0
+Regulatory T cells,0.0,0.0,0.0,3065.0
+SPP1+,0.0,0.0,0.0,3233.0
+Smooth muscle cells,0.0,0.0,0.0,210.0
+Stalk-like ECs,0.0,0.0,0.0,433.0
+Stem-like/TA,0.0,0.0,0.0,406.0
+Stromal 1,0.0,0.0,0.0,1037.0
+Stromal 2,0.0,0.0,0.0,389.0
+Stromal 3,0.0,0.0,0.0,865.0
+T follicular helper cells,0.0,0.0,0.0,615.0
+T helper 17 cells,0.0,0.0,0.0,1967.0
+Tip-like ECs,0.0,0.0,0.0,913.0
+Unknown,0.0,0.0,0.0,2018.0
+blood vessel endothelial cell,0.0,0.0,0.0,0.0
+cDC,0.0,0.0,0.0,481.0
+"central memory CD4-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+classical monocyte,0.0,0.0,0.0,0.0
+colorectal cancer cell,0.0,0.0,0.0,0.0
+cytotoxic CD56-dim natural killer cell,0.0,0.0,0.0,0.0
+"effector memory CD8-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+enterocyte,0.0,0.0,0.0,0.0
+"exhausted-like CD8-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+fibroblast,0.0,0.0,0.0,0.0
+gamma delta T cells,0.0,0.0,0.0,982.0
+glial cell,0.0,0.0,0.0,0.0
+mast cell,0.0,0.0,0.0,0.0
+memory B cell,0.0,0.0,0.0,0.0
+naive B cell,0.0,0.0,0.0,0.0
+"naive thymus-derived CD4-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+pericyte cell,0.0,0.0,0.0,0.0
+plasmacytoid dendritic cell,0.0,0.0,0.0,0.0
+"proliferating CD8-positive, alpha-beta T cell",0.0,0.0,0.0,0.0
+regulatory T cell,0.0,0.0,0.0,0.0
+accuracy,0.0,0.0,0.0,0.0
+macro avg,0.0,0.0,0.0,61370.0
+weighted avg,0.0,0.0,0.0,61370.0

@@ -1,0 +1,28 @@
+train_dataset = ,[],test_datset = ,
+celltype = ,Cell_type_dblabel,method = ,author
+remove_nonshared = ,False,merge = ,,use_raw = ,False,genes_to_use = ,
+accuracy=,0.65,f1=,0.67
+clustering report
+ari=,0.94,ami=,0.93
+silhouette_celltype=,0.47,silhouette_pred=,0.18
+pair confusion matrix
+,0,1
+0,2786646000,2711724
+1,79584284,897273522
+classification report
+,precision,recall,f1-score,support
+HEV endothelial cell,0.0,0.0,0.0,0.0
+T cell,1.0,0.95,0.97,22522.0
+blood vessel endothelial cell,0.0,0.0,0.0,0.0
+colorectal cancer cell,0.0,0.0,0.0,0.0
+enterocyte,0.0,0.0,0.0,0.0
+epithelial cell,0.0,0.0,0.0,17847.0
+fibroblast,1.0,0.57,0.73,5873.0
+glial cell,0.0,0.0,0.0,0.0
+lymphocyte of B lineage,1.0,0.99,1.0,8623.0
+myeloid leukocyte,1.0,1.0,1.0,6505.0
+natural killer cell,0.0,0.0,0.0,0.0
+pericyte cell,0.0,0.0,0.0,0.0
+accuracy,0.65,0.65,0.65,0.65
+macro avg,0.33,0.29,0.31,61370.0
+weighted avg,0.71,0.65,0.67,61370.0

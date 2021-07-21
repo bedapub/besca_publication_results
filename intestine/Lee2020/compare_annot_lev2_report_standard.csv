@@ -1,0 +1,47 @@
+train_dataset = ,[],test_datset = ,
+celltype = ,Cell_subtype_dblabel_lev2,method = ,author
+remove_nonshared = ,False,merge = ,,use_raw = ,False,genes_to_use = ,
+accuracy=,0.76,f1=,0.7
+clustering report
+ari=,0.79,ami=,0.83
+silhouette_celltype=,0.05,silhouette_pred=,0.19
+pair confusion matrix
+,0,1
+0,3124426676,173341714
+1,21556528,446890612
+classification report
+,precision,recall,f1-score,support
+B cell,1.0,1.0,1.0,3592.0
+"CD4-positive, alpha-beta T cell",0.55,0.94,0.69,7648.0
+"CD8-positive, alpha-beta T cell",0.7,0.93,0.8,6230.0
+HEV endothelial cell,0.0,0.0,0.0,0.0
+T-helper 17 cell,0.0,0.0,0.0,1967.0
+animal cell,0.0,0.0,0.0,2018.0
+blood vessel endothelial cell,0.0,0.0,0.0,0.0
+classical monocyte,0.66,0.89,0.76,2006.0
+colorectal cancer cell,0.97,1.0,0.98,17050.0
+cytotoxic CD56-dim natural killer cell,0.0,0.0,0.0,0.0
+endothelial cell,0.0,0.0,0.0,44.0
+endothelial cell of lymphatic vessel,0.0,0.0,0.0,108.0
+endothelial stalk cell,0.0,0.0,0.0,433.0
+endothelial tip cell,0.0,0.0,0.0,913.0
+enterocyte,0.99,0.98,0.98,268.0
+fibroblast,0.68,1.0,0.81,2291.0
+gamma delta T cell,0.0,0.0,0.0,982.0
+glial cell,0.99,0.99,0.99,293.0
+goblet cell,0.0,0.0,0.0,123.0
+macrophage,0.82,0.72,0.77,3233.0
+mast cell,0.95,1.0,0.97,149.0
+myeloid dendritic cell,0.77,0.82,0.8,481.0
+myofibroblast,0.0,0.0,0.0,1143.0
+natural killer cell,0.0,0.0,0.0,1089.0
+pericyte cell,0.61,0.98,0.76,438.0
+plasma cell,0.99,0.99,0.99,5019.0
+plasmacytoid dendritic cell,0.0,0.0,0.0,0.0
+proliferating myeloid leukocyte,0.0,0.0,0.0,171.0
+regulatory T cell,0.0,0.0,0.0,3065.0
+smooth muscle cell,0.0,0.0,0.0,210.0
+transit amplifying cell,0.0,0.0,0.0,406.0
+accuracy,0.76,0.76,0.76,0.76
+macro avg,0.34,0.4,0.36,61370.0
+weighted avg,0.66,0.76,0.7,61370.0
