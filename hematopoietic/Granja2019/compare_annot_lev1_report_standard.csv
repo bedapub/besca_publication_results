@@ -1,0 +1,26 @@
+train_dataset = ,[],test_datset = ,
+celltype = ,BioClassification_dblabel_short_lev1,method = ,citeseq
+remove_nonshared = ,False,merge = ,,use_raw = ,False,genes_to_use = ,
+accuracy=,0.82,f1=,0.78
+clustering report
+ari=,0.84,ami=,0.8
+silhouette_celltype=,0.32,silhouette_pred=,0.28
+pair confusion matrix
+,0,1
+0,909473260,55950584
+1,11294062,235192250
+classification report
+,precision,recall,f1-score,support
+T cell,0.99,1.0,0.99,12770.0
+common lymphoid progenitor,0.78,0.35,0.48,1157.0
+erythrocyte,0.98,0.79,0.87,1982.0
+granulocyte,0.0,0.0,0.0,3177.0
+hematopoietic cell,0.0,0.0,0.0,681.0
+hematopoietic multipotent progenitor cell,0.63,0.53,0.58,2094.0
+hematopoietic stem cell,0.49,0.96,0.65,1178.0
+lymphocyte of B lineage,0.76,1.0,0.86,2483.0
+myeloid leukocyte,0.71,1.0,0.83,7148.0
+natural killer cell,0.98,0.95,0.96,2143.0
+accuracy,0.82,0.82,0.82,0.82
+macro avg,0.63,0.66,0.62,34813.0
+weighted avg,0.76,0.82,0.78,34813.0

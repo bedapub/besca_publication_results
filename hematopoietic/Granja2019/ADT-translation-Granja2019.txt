@@ -1,27 +1,27 @@
-BioClassification	dblabel_short	dblabel_short_lev2
-22_CD4.M	MemCD4Tcell	CD4Tcell
-11_CD14.Mono.1	ClassMonocyte	ClassMonocyte
-16_Pre.B	ProBcell	ProBcell
-15_CLP.2	CommonLymphoidPC	CommonLymphoidPC
-19_CD8.N	NaiCD8Tcell	CD8Tcell
-20_CD4.N1	NaiCD4Tcell	CD4Tcell
-08_GMP.Neut	Neutrophil	Neutrophil
-24_CD8.CM	CMCD8Tcell	CD8Tcell
-12_CD14.Mono.2	ClassMonocyte	ClassMonocyte
-07_GMP	GranuloMonocytePC	GranuloMonocytePC
-09_pDC	pDC	pDC
-17_B	Bcell	Bcell
-03_Late.Eryth	Erythrocyte	Erythrocyte
-10_cDC	cDC	cDC
-25_NK	NKcell	NKcell
-06_CLP.1	CommonLymphoidPC	CommonLymphoidPC
-02_Early.Eryth	Erythrocyte	Erythrocyte
-21_CD4.N2	NaiCD4Tcell	CD4Tcell
-14_Unk	Hematopoietic	Hematopoietic
-13_CD16.Mono	NClassMonocyte	NClassMonocyte
-01_HSC	HematoStem	HematoStem
-26_Unk	Hematopoietic	Hematopoietic
-23_CD8.EM	EMCD8Tcell	CD8Tcell
-05_CMP.LMPP	HematoMultipotentPC	HematoMultipotentPC
-04_Early.Baso	Basophil	Basophil
-18_Plasma	Plasma	Plasma
+BioClassification	dblabel_short	dblabel_short_lev2	dblabel_short_lev1
+22_CD4.M	MemCD4Tcell	CD4Tcell	Tcell
+11_CD14.Mono.1	ClassMonocyte	ClassMonocyte	Myeloid
+16_Pre.B	ProBcell	ProBcell	Blymphocyte
+15_CLP.2	CommonLymphoidPC	CommonLymphoidPC	CommonLymphoidPC
+19_CD8.N	NaiCD8Tcell	CD8Tcell	Tcell
+20_CD4.N1	NaiCD4Tcell	CD4Tcell	Tcell
+08_GMP.Neut	Neutrophil	Neutrophil	Granulocyte
+24_CD8.CM	CMCD8Tcell	CD8Tcell	Tcell
+12_CD14.Mono.2	ClassMonocyte	ClassMonocyte	Myeloid
+07_GMP	GranuloMonocytePC	GranuloMonocytePC	Granulocyte
+09_pDC	pDC	pDC	Myeloid
+17_B	Bcell	Bcell	Blymphocyte
+03_Late.Eryth	Erythrocyte	Erythrocyte	Erythrocyte
+10_cDC	cDC	cDC	Myeloid
+25_NK	NKcell	NKcell	NKcell
+06_CLP.1	CommonLymphoidPC	CommonLymphoidPC	CommonLymphoidPC
+02_Early.Eryth	Erythrocyte	Erythrocyte	Erythrocyte
+21_CD4.N2	NaiCD4Tcell	CD4Tcell	Tcell
+14_Unk	Hematopoietic	Hematopoietic	Hematopoietic
+13_CD16.Mono	NClassMonocyte	NClassMonocyte	Myeloid
+01_HSC	HematoStem	HematoStem	HematoStem
+26_Unk	Hematopoietic	Hematopoietic	Hematopoietic
+23_CD8.EM	EMCD8Tcell	CD8Tcell	Tcell
+05_CMP.LMPP	HematoMultipotentPC	HematoMultipotentPC	HematoMultipotentPC
+04_Early.Baso	Basophil	Basophil	Granulocyte
+18_Plasma	Plasma	Plasma	Blymphocyte
